@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>add new product<br>
+    <input id="sanpham" type="text" placeholder="newproduct"/>
+    <button onclick="nhap()">add</button>
+</p>
+<p>display all</p>
+    <table>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>name product</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody id ="bang">
+
+    </tbody>
+</table>
+<script>
+    let name =["iphone8", "iphonex", "iphone12", "iphone13", "ipab", "macbook"];
+    function danhsach(){
+        let name2 ="";
+        for (let i = 0;i < name.length;i++){
+            name2 += `<tr>
+            <td>${i + 1}</td>
+            <td>${name[i]}</td>
+            <td><button  onclick="thay(${i})">Edit</button></td>
+            <td><button  onclick="xoa(${i})">Delete</button></td>
+        </tr>`
+        }
+        document.getElementById("bang").innerHTML = name2;
+    }
+    function nhap(){
+        let themten=document.getElementById("sanpham").value;
+        name.push(themten);
+        danhsach();
+    }
+    function xoa(vitri){
+        let b = confirm("bạn có chắc chắn muốn xoá");
+        if(b){
+            name.splice(vitri,1) ;
+        }
+        else {
+            name;
+        }
+danhsach();
+}
+function thay(vitri){
+        let a = prompt("nhập tên sản phẩm muốn thay thế");
+        for(i=0;i<name.length;i++){
+            if (vitri==i){
+                name[i]=a;
+            }
+            else {
+                name[i];
+            }
+        }
+    danhsach();
+}
+danhsach();
+</script>
+</body>
+</html>
